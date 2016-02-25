@@ -2,32 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>home</title>
+    <title>{{ template_title }} </title>
 </head>
 <body>
-     - create folder template   on src
-     - change config on settings.py
-           TEMPLATES = [
-                .....
-               'DIRS': [os.path.join(BASE_DIR,"templates")],
-                .....
-           ]
-     - trydjango18/urls.py
-             url(r'^news/','newslatter.views.home',name='home'),
-
-     - trydjango18/settings.py
-        INSTALLED_APPS = (
-            ...
-            'newslatter',
-            ....
-     )
-
-    -newslatter/views.py
-def home(request):
-    return render(request,'index.html')
+    title is {{ template_title }}
+<form method="" action="/">
+    <input type="text" name="username" value="{{ template_user }}">
+    <input type="text" name="surname"  value="{{ template_sur }}">
+    <input type="submit" value="Login">
 
 
-* show file on /src/template first, not show  file on src/newslatter/template
 
+
+
+</form>
 </body>
 </html>
