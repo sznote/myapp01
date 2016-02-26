@@ -9,9 +9,15 @@
 <form method="" action="/">
     <input type="text" name="username" value="{{ template_user }}">
     <input type="text" name="surname"  value="{{ template_sur }}">
+
+
+  <div align="right"></div>
+  username  ::  {{ form.your_name }} </br>
+  surname  ::    {{ form.your_surname }} </br>
+    email :: {{ form.your_email }} </br>
+
     <input type="submit" value="Login">
-
-
+    {{ form }}
 
 
 

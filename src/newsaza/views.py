@@ -1,6 +1,6 @@
 from django.shortcuts import render
-#from django.forms import forms
-#from .models import SignUP
+from .myforms import SignUP
+
 
 # Create your views here.
 
@@ -16,5 +16,8 @@ def home(request):
         "template_sur": "srichock",
     }
 
+    data = SignUP()
+
     #return render(request,"home.html",{})
-    return render(request,"home.html",context=mytitle)
+    #return render(request,"home.html",context=mytitle)
+    return render(request,"home.html",{'form': data})
