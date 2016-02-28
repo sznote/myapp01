@@ -5,6 +5,8 @@
     <title>{{ template_title }} </title>
 </head>
 <body>
+
+<!--
     title is {{ template_title }}
 <form method="" action="/">
     <input type="text" name="username" value="{{ template_user }}">
@@ -15,11 +17,25 @@
   username  ::  {{ form.your_name }} </br>
   surname  ::    {{ form.your_surname }} </br>
     email :: {{ form.your_email }} </br>
-
+-->
+<form method="" action="/">
     <input type="submit" value="Login">
-    {{ form }}
 
+    <!--   {{ form.as_p }} -->
+     <!-- {{ form.as_ul }}
+     Tel. :: {{ tel  }}  <BR>
+     name is :: {{ name }} <BR>
 
+     -->
+    {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
 
 </form>
 </body>

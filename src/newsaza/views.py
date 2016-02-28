@@ -11,13 +11,23 @@ def home(request):
         "template_user": "username",
         "template_sur": "surname",
     }
-    context = {
-        "template_user": "sahai",
-        "template_sur": "srichock",
-    }
 
     data = SignUP()
 
-    #return render(request,"home.html",{})
-    #return render(request,"home.html",context=mytitle)
-    return render(request,"home.html",{'form': data})
+    context = {
+        "form": data,
+    }
+
+    if data.is_valid():
+        surname = data.cleaned_data['your_surname']
+        tel = data.cleaned_data['your_tel']
+
+        context = {
+            "form": data,
+            "name": surname,
+            "tel": tel,
+        }
+    # return render(request,"home.html",{})
+    # return render(request,"home.html",context=mytitle)
+    # return render(request,"home.html",{'form': data})
+    return render(request, "home.html", context)
