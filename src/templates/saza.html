@@ -8,15 +8,19 @@
 <form  action="/saza/" method="post"> {% csrf_token %}
 
     <div></div>
-     Hello {{  username }}
-    <div></div>
 
-    Please login ..
-    {{ form.as_p }}
+    {% if username   %}
+       Hello {{ username  }}
+    {% else %}
+       Please login ..
+       {{ form.as_p }}
 
+        <div></div>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Clear">
 
-    <input type="submit" value="Submit">
-    <input type="reset" value="Clear">
+    {% endif %}
+
 </form>
 </body>
 </html>

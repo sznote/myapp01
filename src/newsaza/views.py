@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .myforms import SignUpForm
 from .myforms import SazaForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -42,15 +43,22 @@ def home(request):
 def saza(request):
 
     username = ''
-    form = SazaForm()
+
     if request.method == "POST":
         print request.POST
         username = request.POST['username']
-    #   password = request.POST['password']
+        form = SazaForm(request.POST)
+    else:
+        form = SazaForm()
 
-    context = {
+    if form.is_valid():
+        context = {
+         "username": username,
+        }
+    else:
+        context = {
         "form": form,
-        "username": username,
-        #"password": password
-    }
+        }
+
+
     return render(request,"saza.html",context)
