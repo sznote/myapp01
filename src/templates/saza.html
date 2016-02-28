@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myname saza</title>
+</head>
+<body>
+<form  action="/saza/" method="post"> {% csrf_token %}
+
+    <div></div>
+     Hello {{  username }}
+    <div></div>
+
+    Please login ..
+    {{ form.as_p }}
+
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Clear">
+</form>
+</body>
+</html>

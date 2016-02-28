@@ -18,15 +18,20 @@
   surname  ::    {{ form.your_surname }} </br>
     email :: {{ form.your_email }} </br>
 -->
-<form method="" action="/">
+<form method='POST' action="/">
+   {% csrf_token %}
+
+    <div></div>
+      {{ form.as_p }}
+     <!-- {{ form.as_ul }} -->
+
+    name  :: {{ name  }}  <BR>
+    email is :: {{ email }} <BR>
+
+    <div></div>
     <input type="submit" value="Login">
-
-    <!--   {{ form.as_p }} -->
-     <!-- {{ form.as_ul }}
-     Tel. :: {{ tel  }}  <BR>
-     name is :: {{ name }} <BR>
-
-     -->
+   <!--
+ <div></div>
     {% for field in form %}
     <div class="fieldWrapper">
         {{ field.errors }}
@@ -36,7 +41,7 @@
         {% endif %}
     </div>
     {% endfor %}
-
+-->
 </form>
 </body>
 </html>

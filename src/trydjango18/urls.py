@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^$','newsaza.views.home',name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^news/','newslatter.views.home',name='home'),
+    url(r'^saza/','newsaza.views.saza',name='saza'),
 #    url(r'^aaa/','newslatter.views.aaa',name='aaa'),
 ]
