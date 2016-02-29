@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .myforms import SignUpForm
+from .myforms import ContactForm, SignUpForm
 from .myforms import SazaForm
 from django.http import HttpResponseRedirect
 
@@ -62,3 +62,13 @@ def saza(request):
 
 
     return render(request,"saza.html",context)
+
+
+def contact(request):
+    form = ContactForm(request.POST or  None)
+
+    context  = {
+        "form": form,
+    }
+
+    return render(request,"forms.html",context)
