@@ -24,9 +24,6 @@ def home(request):
             print request.POST[key]
 
     data = SignUpForm()
-
-
-
     context = {
         "form": data,
         "name":  fullname
@@ -48,6 +45,7 @@ def saza(request):
         print request.POST
         username = request.POST['username']
         form = SazaForm(request.POST)
+        #username = form.cleaned_data['username']
     else:
         form = SazaForm()
 
@@ -65,10 +63,22 @@ def saza(request):
 
 
 def contact(request):
-    form = ContactForm(request.POST or  None)
 
-    context  = {
+    fullname = ''
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        fullname = form.cleaned_data.get("fullname")
+        email = form.cleaned_data.get("email")
+        ''' if email == "iam.saza@gmail.com":
+            print "hello saza" '''
+        print form.cleaned_data
+
+        #instance = form.save(commit=False)
+        #fullname =  instance.full_name
+
+    context = {
         "form": form,
+        "fullname": fullname,
     }
 
     return render(request,"forms.html",context)
