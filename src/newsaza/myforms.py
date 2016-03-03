@@ -46,6 +46,11 @@ class ContactForm(forms.Form):
     def clean(self):
         print "def clean"
 
+    def validate(self,value):
+        # check if value consists only of valid emails.
+        print "validate"
+
+
 class SignUpForm(forms.ModelForm):
     class Meta:
         model = SignUP

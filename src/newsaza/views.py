@@ -71,7 +71,13 @@ def contact(request):
         email = form.cleaned_data.get("email")
         ''' if email == "iam.saza@gmail.com":
             print "hello saza" '''
-        print form.cleaned_data
+        '''
+        for key in form.cleaned_data:
+            print key
+            print form.cleaned_data.get(key)
+        '''
+        print 'hello' + str(form.cleaned_data)
+
 
         #instance = form.save(commit=False)
         #fullname =  instance.full_name
