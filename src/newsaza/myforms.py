@@ -76,7 +76,7 @@ class SignUpForm(forms.ModelForm):
         zipcode = self.cleaned_data.get('zipcode')
         if not zipcode.isnumeric():
             raise forms.ValidationError("Zipcode only number")
-            return None
+
         return zipcode
 
 
