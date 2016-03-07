@@ -1,6 +1,6 @@
 from django import forms
 from .models import SignUP
-
+#import re
 '''
 #class SignUP(forms.Form):
 
@@ -72,7 +72,11 @@ class SignUpForm(forms.ModelForm):
         return fullname
 
     def clean_zipcode(self):
+
         zipcode = self.cleaned_data.get('zipcode')
+        if not zipcode.isnumeric():
+            raise forms.ValidationError("Zipcode only number")
+            return None
         return zipcode
 
 

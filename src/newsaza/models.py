@@ -10,13 +10,14 @@ class SignUP(models.Model):
 
     email = models.EmailField()
     fullname = models.CharField(max_length=120,blank=True,null=True)
-    zipcode =  models.DecimalField(max_digits=10,decimal_places=8)
+    #zipcode =  models.IntegerField(range(8,10))
+    zipcode = models.CharField(max_length=10,blank=True)
     timestamp = models.DateTimeField(auto_now_add=True,auto_now=False)
     updated = models.DateTimeField(auto_now_add=False,auto_now=True)
 
     def __unicode__(self):
 
-        return self.email
+        return self.fullname
 
 
 class DnsName(models.Model):

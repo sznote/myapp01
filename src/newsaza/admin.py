@@ -5,3 +5,11 @@ from django.contrib import admin
 
 from .models import SignUP
 
+
+class SignUpAdmin(admin.ModelAdmin):
+    list_display = ["__unicode__","fullname","timestamp"]
+    class Meta:
+        model = SignUP
+
+admin.site.register(SignUP,SignUpAdmin)
+
