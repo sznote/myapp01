@@ -103,4 +103,4 @@ def contact(request):
         "fullname": fullname,
     }
 
-    return render(request,"forms.html",context)
+    return render(request,"contact.html",context)
