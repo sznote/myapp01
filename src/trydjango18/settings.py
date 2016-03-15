@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'mail.isuzu-unt.com'
+EMAIL_HOST_USER = 'saza@isuzu-unt.com'
+EMAIL_HOST_PASSWORD = 'saza2123'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Application definition
 

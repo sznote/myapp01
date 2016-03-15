@@ -29,8 +29,13 @@ class ContactForm(forms.Form):
         print "def clean_email"
         if email == "saza_thi@hotmail.com":
             raise forms.ValidationError("i love you saza!!")
-            email = "saza_thi@yaohoo.com"
+            #email = "saza_thi@yaohoo.com"
         return email
+
+
+    def clean_message(self):
+        message = self.cleaned_data.get('message')
+        return message
 
     def clean_fullname(self):
             print "def clean_fullname"

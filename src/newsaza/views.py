@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from .myforms import ContactForm, SignUpForm
 from .myforms import SazaForm
@@ -78,11 +79,11 @@ def saza(request):
 
 def contact(request):
 
-    fullname = ''
     form = ContactForm(request.POST or None)
+    fullname = ''
     if form.is_valid():
-        fullname = form.cleaned_data.get("fullname")
-        email = form.cleaned_data.get("email")
+        #fullname = form.cleaned_data.get("fullname")
+        #email = form.cleaned_data.get("email")
 
         ''' if email == "iam.saza@gmail.com":
             print "hello saza" '''
@@ -91,6 +92,8 @@ def contact(request):
             print key
             print form.cleaned_data.get(key)
         '''
+        print form.cleaned_data.get("email")
+        fullname = form.clean_email()
 
         print 'hello' + str(form.cleaned_data)
 
