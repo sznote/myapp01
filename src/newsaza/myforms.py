@@ -20,18 +20,17 @@ from .models import SignUP
 class ContactForm(forms.Form):
     # class forms
     fullname = forms.CharField()
-    email = forms.EmailField()
+    email = forms.EmailField(initial="<email to>")
     message = forms.CharField(widget=forms.Textarea)
 
     # method is called subclass clean_<fieldname()>
     def clean_email(self):
         email = self.cleaned_data.get('email')
         print "def clean_email"
-        if email == "saza_thi@hotmail.com":
+        ''' if email == "saza_thi@hotmail.com":
             raise forms.ValidationError("i love you saza!!")
-            #email = "saza_thi@yaohoo.com"
+            #email = "saza_thi@yaohoo.com" '''
         return email
-
 
     def clean_message(self):
         message = self.cleaned_data.get('message')

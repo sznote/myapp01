@@ -1,4 +1,5 @@
 from django.core.mail import send_mail
+from django.conf import settings
 from django.shortcuts import render
 from .myforms import ContactForm, SignUpForm
 from .myforms import SazaForm
@@ -82,22 +83,34 @@ def contact(request):
     form = ContactForm(request.POST or None)
     fullname = ''
     if form.is_valid():
-        #fullname = form.cleaned_data.get("fullname")
-        #email = form.cleaned_data.get("email")
+
+        fullname = form.cleaned_data.get("fullname")
+        email = form.cleaned_data.get("email")
+        message = form.cleaned_data.get("message")
 
         ''' if email == "iam.saza@gmail.com":
-            print "hello saza" '''
-        '''
+            print "hello saza"
+
         for key in form.cleaned_data:
             print key
             print form.cleaned_data.get(key)
-        '''
+
         print form.cleaned_data.get("email")
         fullname = form.clean_email()
-
+        print "full name is: %s" % fullname
         print 'hello' + str(form.cleaned_data)
+        '''
+        from_email = settings.EMAIL_HOST_USER
+        subject = 'Site contact form :'
+        contact_message = message
+        to_email = [email]
+        #to_email = [email, 'youother@email.com']
 
-
+        send_mail(subject,
+                  contact_message,
+                  from_email,
+                  to_email,
+                  fail_silently=False)
         #instance = form.save(commit=False)
         #fullname =  instance.full_name
 
