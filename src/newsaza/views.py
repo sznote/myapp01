@@ -105,11 +105,14 @@ def contact(request):
         contact_message = message
         to_email = [email]
         #to_email = [email, 'youother@email.com']
-
+        some_html = """
+        <h1>hello %s</h1>
+        """ % message
         send_mail(subject,
                   contact_message,
                   from_email,
                   to_email,
+                  html_message=some_html,
                   fail_silently=False)
         #instance = form.save(commit=False)
         #fullname =  instance.full_name
