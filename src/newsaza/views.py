@@ -45,7 +45,7 @@ def home(request):
 
     context["title"]=title
 
-    return render(request, "home.html", context)
+    return render(request, "base.html", context)
 
 
     # return render(request,"home.html",{})
@@ -74,9 +74,7 @@ def saza(request):
         "form": form,
         }
 
-
     return render(request,"saza.html",context)
-
 
 def contact(request):
 
