@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ template_title }} </title>
-</head>
-<body>
+{% extends  "base.html" %}
 
+{% block head_title %}  {{ block.super }}  {% endblock %}
+
+    {% block jumbotron %}
+    {{ block.super }}
+    Hi
+    {% endblock %}
 <!--
 # -- -- --
 #
@@ -20,6 +20,9 @@
   surname  ::    {{ form.your_surname }} </br>
     email :: {{ form.your_email }} </br>
 -->
+
+{% block content %}
+
 <form method='POST' action="/">
    {% csrf_token %}
 
@@ -27,16 +30,18 @@
       {{ form.as_p }}
       {{ title }}
       <div></div>
-      Username is: {{ request.user }}
+     <!--  Username is: {{ request.user }} -->
      <!-- {{ form.as_ul }} -->
 
-     <br>
-     <br>
+
+   <!--
     fullname  :: {{ name  }}  <BR>
     email :: {{ email }} <BR>
-
     <div></div>
+    -->
+
     <input type="submit" value="Login">
+
    <!--
  <div></div>
     {% for field in form %}
@@ -49,6 +54,6 @@
     </div>
     {% endfor %}
 -->
-</form>
-</body>
-</html>
+    </form>
+
+{% endblock %}
