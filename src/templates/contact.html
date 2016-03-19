@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact</title>
-</head>
-<body>
-
-<form method="POST" action = "/contact/">{%  csrf_token %}
-    {{ form.as_p }}
-    <!-- hello   {{ fullname  }} -->
-    <input type="submit" value="Submit">
-</form>
+{% extends  "base.html" %}
+{% load crispy_forms_tags %}
 
 
-</body>
-</html>
+{% block head_title %}
+{{ block.super }}
+{% endblock %}
+
+{% block jumbotron %}
+{{ block.super }}
+    <!-- {{ title }} -->
+{% endblock %}
+
+{% block content %}
+
+ <div class="row">
+     <div class="col-sm-6">
+         <p> <h1> บริการให้คำปรึกษา </h1></p>
+     </div>
+     <div class="col-sm-6 pull-right">
+        <form method="POST" action = "/contact/">{%  csrf_token %}
+
+            {{ form|crispy }}
+
+             <input class="btn btn-primary btn-sm" type="submit" value="Send Message">
+
+        </form>
+     </div>
+</div>
+
+{% endblock %}
