@@ -45,8 +45,8 @@ def home(request):
 
     context["title"]= title
 
+    #return render(request, "example_fluid.html", context)
     return render(request, "home.html", context)
-
 
     # return render(request,"home.html",{})
     # return render(request,"home.html",context=mytitle)

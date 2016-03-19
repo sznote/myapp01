@@ -7,6 +7,19 @@
     {{ block.super }}
     <!-- {{ title }} -->
     {% endblock %}
+
+<style>
+    {% block style %}
+
+    .text-align-center {
+        text-align: center;
+        color: red;
+    }
+
+    {% endblock %}
+
+</style>
+
 <!--
 # -- -- --
 #
@@ -25,43 +38,52 @@
 {% block content %}
 
 <div class="row">
-   <div class="col-sm-6 col-md-3">
 
-    <form method='POST' action="/">
-    {% csrf_token %}
+   <div class='col-sm-3 pull-right'>
 
-     <h1> {{ title }} </h1>
-     <!-- {{ request.user }} -->
-          {{ form|crispy }}
+        <form method='POST' action="/">
+        {% csrf_token %}
+        <p class="lead" > {{ title }} </p>
+         <!-- {{ request.user }} -->
+              {{ form|crispy }}
+        <!--
 
+        Username is: {{ request.user }}
+        {{ form.as_ul }}
 
-
-    <!--
-
-    Username is: {{ request.user }}
-    {{ form.as_ul }}
-
-    fullname  :: {{ name  }}  <BR>
-    email :: {{ email }} <BR>
-    <div></div>
+        fullname  :: {{ name  }}  <BR>
+        email :: {{ email }} <BR>
+        <div></div>
+        -->
+        <input class="btn btn-primary btn-sm" type="submit" value="Sign Up">
+       <!--
+     <div></div>
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
     -->
+        </form>
 
-    <input class="btn btn-primary btn-sm" type="submit" value="Sign Up">
+   </div>
 
-   <!--
- <div></div>
-    {% for field in form %}
-    <div class="fieldWrapper">
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
-        {% if field.help_text %}
-        <p class="help">{{ field.help_text|safe }}</p>
-        {% endif %}
+
+    <div class='col-sm-3'>
+        <p class="lead text-align-center"> Build with django &amp; Bootstrap</p>
     </div>
-    {% endfor %}
--->
-    </form>
+    <div class='col-sm-3'>
+        <p class="lead text-align-center"> Created for Starters of all kinds.</p>
     </div>
+    <div class='col-sm-3'>
+        <p class="lead text-align-center"> Aways Open Source</p>
+    </div>
+
+
 </div>
 
 {% endblock %}

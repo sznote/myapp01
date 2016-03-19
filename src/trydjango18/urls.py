@@ -23,9 +23,10 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^$','newsaza.views.home',name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^news/','newslatter.views.home',name='home'),
+    url(r'^news/','newslatter.views.home',name='news'),
     url(r'^saza/','newsaza.views.saza',name='saza'),
     url(r'^contact/$','newsaza.views.contact',name='contact'),
+     url(r'^about/','trydjango18.views.about',name='about'),
 #    url(r'^aaa/','newslatter.views.aaa',name='aaa'),
 ]
 
