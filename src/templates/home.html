@@ -1,10 +1,11 @@
 {% extends  "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}  {{ block.super }}  {% endblock %}
 
     {% block jumbotron %}
     {{ block.super }}
-    Hi
+    <!-- {{ title }} -->
     {% endblock %}
 <!--
 # -- -- --
@@ -23,24 +24,29 @@
 
 {% block content %}
 
-<form method='POST' action="/">
-   {% csrf_token %}
+<div class="row">
+   <div class="col-md-3">
 
-    <div></div>
-      {{ form.as_p }}
-      {{ title }}
-      <div></div>
-     <!--  Username is: {{ request.user }} -->
-     <!-- {{ form.as_ul }} -->
+    <form method='POST' action="/">
+    {% csrf_token %}
+
+     <h1> {{ title }} </h1>
+     <!-- {{ request.user }} -->
+          {{ form|crispy }}
 
 
-   <!--
+
+    <!--
+
+    Username is: {{ request.user }}
+    {{ form.as_ul }}
+
     fullname  :: {{ name  }}  <BR>
     email :: {{ email }} <BR>
     <div></div>
     -->
 
-    <input type="submit" value="Login">
+    <input class="btn btn-primary btn-sm" type="submit" value="Sign Up">
 
    <!--
  <div></div>
@@ -55,5 +61,7 @@
     {% endfor %}
 -->
     </form>
+    </div>
+</div>
 
 {% endblock %}

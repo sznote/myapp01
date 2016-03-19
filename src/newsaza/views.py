@@ -11,7 +11,7 @@ def home(request):
     title = "My Title"
 
     if request.user.is_authenticated():
-        title = "Hello %s" %(request.user)
+        title = "Hello %s" % request.user
 
     fullname = ''
     if request.method == "POST":
@@ -43,7 +43,7 @@ def home(request):
             "form": form,
         }
 
-    context["title"]=title
+    context["title"]= title
 
     return render(request, "home.html", context)
 
