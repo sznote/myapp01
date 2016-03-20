@@ -29,12 +29,11 @@
 
     {% include  'navbar.html' %}
 
-    <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
       {% block jumbotron %}
 
-       <div class="jumbotron">
+     <div class="jumbotron">
+
+           <div class="container">
 
             <div class="row">
               <div class='col-sm-6'>
@@ -51,8 +50,13 @@
 
              </div>
        </div>
-
+     </div>
       {% endblock %}
+
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
 
       {% block content %}
       {% endblock %}
