@@ -1,5 +1,6 @@
-{% load i18n %}{% trans "Account activation on" %} {{ site.name }}
+{% load i18n %}{% trans "Account activation on" %} Complete Registration for {{ site.name }}
 
+<!--  http://127.0.0.1:8000/accounts/activate/6444de8df94ff597dd888a10daddfbac2ac6f49b -->
 
 {% comment %}
 **registration/activation_email_subject.txt**
