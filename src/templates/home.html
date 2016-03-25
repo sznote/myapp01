@@ -46,6 +46,8 @@
 {% block content %}
 
 {% if request.user.is_authenticated %}
+<h1> You are Logged in! </h1>
+{% else %}
 <div class="row">
 
    <div class='col-sm-3 pull-right'>
@@ -104,5 +106,5 @@
 
 
 </div>
-
+ {% endif %}
 {% endblock %}
