@@ -1,5 +1,6 @@
 {% extends  "base.html" %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 
 {% block head_title %}  {{ block.super }}  {% endblock %}
 
@@ -44,6 +45,7 @@
 
 {% block content %}
 
+{% if request.user.is_authenticated %}
 <div class="row">
 
    <div class='col-sm-3 pull-right'>
@@ -82,12 +84,22 @@
 
     <div class='col-sm-3'>
         <p class="lead text-align-center"> Build with django &amp; Bootstrap</p>
+        <img src='{% static "img/beach.jpg" %}' class='img-responsive' />
     </div>
     <div class='col-sm-3'>
-        <p class="lead text-align-center"> Created for Starters of all kinds.</p>
+        <p class="lead text-align-center"> Created for Starters of all kinds. <br><br>
+         <i class="fa fa-camera-retro fa-spin fa-5x"></i>
+        </p>
     </div>
     <div class='col-sm-3'>
-        <p class="lead text-align-center"> Aways Open Source</p>
+        <p class="lead text-align-center"> Aways Open Source
+            <br>
+            <br>
+            <span class='fa-stack fa-lg fa-4x'>
+            <i style="color:blue;" class='fa fa-circle-o-notch fa-stack-2x fa-spin'></i>
+            <i style="color:yellow;" class="fa fa-cog fa-stack-1x"></i>
+            </span>
+        </p>
     </div>
 
 
