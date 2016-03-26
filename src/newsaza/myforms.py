@@ -20,7 +20,7 @@ from .models import SignUP
 class ContactForm(forms.Form):
     # class forms
     fullname = forms.CharField()
-    email = forms.EmailField(initial="<email to>")
+    email = forms.EmailField(initial="<to@domain>")
     message = forms.CharField(widget=forms.Textarea)
 
     # method is called subclass clean_<fieldname()>

@@ -21,6 +21,7 @@
         <form method="POST" action = "/contact/">{%  csrf_token %}
 
             {{ form|crispy }}
+            {{ form.email }}
 
              <input class="btn btn-primary btn-sm" type="submit" value="Send Message">
 

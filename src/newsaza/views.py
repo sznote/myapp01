@@ -3,11 +3,13 @@ from django.conf import settings
 from django.shortcuts import render
 from .myforms import ContactForm, SignUpForm
 from .myforms import SazaForm
+from models import SignUP
 from django.http import HttpResponseRedirect
 
-# Create your views here.
-def home(request):
 
+# Create your views here.
+# reformat  Source code. Ctrl+ ALt + L
+def home(request):
     title = "My Title"
 
     if request.user.is_authenticated():
@@ -15,7 +17,6 @@ def home(request):
 
     fullname = ''
     if request.method == "POST":
-
         '''
         print request.POST
         print request.POST['fullname']
@@ -28,7 +29,7 @@ def home(request):
         '''
 
     form = SignUpForm(request.POST or None)
-    #instance = form.save(commit=False)
+    # instance = form.save(commit=False)
 
     if form.is_valid():
         instance = form.save(commit=False)
@@ -43,9 +44,26 @@ def home(request):
             "form": form,
         }
 
-    context["title"]= title
+    context["title"] = title
 
-    #return render(request, "example_fluid.html", context)
+    if request.user.is_authenticated() and request.user.is_staff:
+        # print (SignUP.objects.all())
+        # for instances in SignUP.objects.all():
+        #     print(instances.email)
+        #     print(instances.fullname)
+        #  control /   -> comment.
+
+        queryset = SignUP.objects.all().order_by('timestamp')
+        #queryset = SignUP.objects.all().order_by('-timestamp').filter(fullname__icontains="sahai")
+        for p in SignUP.objects.raw('select * from newsaza_signup'):
+            #print(p.email,p.fullname)
+            print ("%s is %s" %(p.email,p.fullname))
+
+        context = {
+            "queryset": queryset
+        }
+
+    # return render(request, "example_fluid.html", context)
     return render(request, "home.html", context)
 
     # return render(request,"home.html",{})
@@ -76,12 +94,11 @@ def saza(request):
 
     return render(request,"saza.html",context)
 
-def contact(request):
 
+def contact(request):
     form = ContactForm(request.POST or None)
     fullname = ''
     if form.is_valid():
-
         fullname = form.cleaned_data.get("fullname")
         email = form.cleaned_data.get("email")
         message = form.cleaned_data.get("message")

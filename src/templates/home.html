@@ -5,9 +5,10 @@
 {% block head_title %}  {{ block.super }}  {% endblock %}
 
     {% block jumbotron %}
-     {{ block.super }}
+        {% if not request.user.is_authenticated %}
+            {{ block.super }}
     <!-- {{ title }} -->
-
+        {% endif %}
 
     {% endblock %}
 
@@ -47,6 +48,34 @@
 
 {% if request.user.is_authenticated %}
 <h1> You are Logged in! </h1>
+
+      {% if queryset %}
+         <h2> Welcome  Staff </h2>
+        <!-- <div class='row'> -->
+        <table class="table table-hover">
+            <thead><tr>
+                <th># </th>
+                <th>email</th>
+                <th>fullname</th>
+            </tr></thead>
+            <tbody>
+        {% for instances  in queryset %}
+            <tr>
+                <td>{{ forloop.counter }} </td>
+                <td>{{ instances.email }}  </td>
+                <td>{{ instances.fullname }} </td>
+            </tr>
+            <!--
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"> {{ instances.email }} </div>
+            <div class="col-sm-4" style="background-color:yellow;border=1px;"> {{ instances }} </div>
+            -->
+        {% endfor %}
+            </tbody>
+        </table>
+        <!-- </div> -->
+      {% endif %}
+
 {% else %}
 <div class="row">
 
