@@ -11,6 +11,8 @@ from django.http import HttpResponseRedirect
 # reformat  Source code. Ctrl+ ALt + L
 def home(request):
     title = "My Title"
+    print settings.BASE_DIR , settings.MEDIA_ROOT , settings.STATICFILES_DIRS
+
 
     if request.user.is_authenticated():
         title = "Hello %s" % request.user
